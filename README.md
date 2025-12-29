@@ -20,10 +20,6 @@ Pequeno projeto React + Vite criado para estudos e prática. Sistema de gerencia
    npm run dev
    ```
 
-3. Build para produção:
-   ```bash
-   npm run build
-   ```
 
 ## Estrutura do projeto
 ```
