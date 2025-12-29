@@ -57,7 +57,6 @@ export function Dashboard(){
                     <img src={searchSvg} alt="icone de pesquisar" />
                 </Button>
             </form>
-            ''
             <div className="my-6 flex flex-col gap-4 max-h-[342px] overflow-y-scroll">
                 {
                     refunds.map((item) => (

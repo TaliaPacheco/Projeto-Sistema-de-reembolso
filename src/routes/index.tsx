@@ -1,22 +1,19 @@
-import { BrowserRouter, Route } from "react-router";
+import { BrowserRouter } from "react-router";
+import { useAuth } from "../contexts/AuthContext";
 
 import { AuthRoutes } from "./AuthRoutes";
 import { ManagerRoutes } from "./ManagerRoutes";
 import { EmployeeRoutes } from "./EmployeeRoutes";
 
-import { Loading } from "../components/Loading";
-
-const isLoading = false
-
-const session = {
-    user: {
-        role: ""
-    }
-}
-
 export function Routes(){
-    function Route(){
-        switch (session.user.role) {
+    const { user } = useAuth()
+
+    function renderRoutes(){
+        if (!user) {
+            return <AuthRoutes />
+        }
+
+        switch (user.role) {
             case "employee":
                 return <EmployeeRoutes />
             case "manager":
@@ -26,13 +23,9 @@ export function Routes(){
         }
     }
 
-    if(isLoading){
-        return <Loading/>
-    }
-
     return (
         <BrowserRouter>
-            < Route />
+            {renderRoutes()}
         </BrowserRouter>
     )
 }
